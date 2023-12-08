@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTTP Status Codes</title>
+    <meta name="description" content="Explore our comprehensive guide to HTTP Status Codes. Understand the meanings and applications of each status code for effective web development and troubleshooting.">
+    <link rel="canonical" href="http://www.yourwebsite.com/http-status-codes-guide">
+    <meta property="og:title" content="HTTP Status Codes Guide - Comprehensive Resource">
+    <meta property="og:description" content="Learn everything about HTTP Status Codes for effective web development and troubleshooting.">
+    <meta property="og:image" content="http://www.yourwebsite.com/images/og-image.jpg">
+    <meta property="og:url" content="http://www.yourwebsite.com/http-status-codes-guide">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HTTP Status Codes Guide - Comprehensive Resource">
+    <meta name="twitter:description" content="Explore our in-depth guide to understand HTTP Status Codes for web development.">
+    <meta name="twitter:image" content="http://www.yourwebsite.com/images/twitter-card-image.jpg">
+
+    <!-- Stylesheet here -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="search.js"></script>
+
+</head>
+<body>
+    <section style="text-align: center; padding: 60px 20px; background-color: #1a1a1a; color: #f0f0f0;">
+        <h1 style="font-size: 2.5em; margin-bottom: 20px;">HTTP Status Codes Guide</h1>
+        <p style="font-size: 1.2em; max-width: 800px; margin: auto;">Dive into the world of HTTP Status Codes with our comprehensive guide. Understand each status code's purpose and usage in web communication. Perfect for developers, sysadmins, and tech enthusiasts, this guide is your go-to resource for troubleshooting and mastering HTTP responses, ranging from informational to error codes.</p>
+    </section>
+
+    <div style="text-align: center; margin: 30px;">
+        <input type="text" id="searchBox" placeholder="Search a status code..." onkeyup="handleKeyPress(event)">
+        <button onclick="searchStatusCodes()" id="searchButton">Search</button>
+    </div>
+    
+
+    <div class="container">
+        <!-- 1xx codes start here -->
+        <div class="status-code-group">
+            <h2>1xx - Informational</h2>
+            <div class="status-code">
+                <h3>100 Continue</h3>
+                <p>Waiting for the client to emit the body of the request.</p>
+            </div>
+            <div class="status-code">
+                <h3>101 Switching Protocols</h3>
+                <p>The server has agreed to change protocol.</p>
+            </div>
+            <div class="status-code">
+                <h3>102 Processing</h3>
+                <p>The server is processing the request, but no response is available yet. For WebDav.</p>
+            </div>
+            <div class="status-code">
+                <h3>103 Early Hints</h3>
+                <p>The server returns some response headers before final HTTP message.</p>
+            </div>
+            <!-- 1xx codes end here -->
+        </div>
+
+            <!-- 2xx codes start here -->
+        <div class="status-code-group">
+            <h2>2xx - Success</h2>
+            
+            <div class="status-code">
+                <h3>200 OK</h3>
+                <p>Standard response for successful HTTP requests.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>201 Created</h3>
+                <p>The request has been fulfilled, resulting in the creation of a new resource.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>202 Accepted</h3>
+                <p>The request has been accepted for processing, but the processing has not been completed.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>203 Non-Authoritative Information</h3>
+                <p>The request is successful but the content of the original request has been modified by a transforming proxy.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>204 No Content</h3>
+                <p>The server successfully processed the request and is not returning any content.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>205 Reset Content</h3>
+                <p>The server indicates to reinitialize the document view which sent this request.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>206 Partial Content</h3>
+                <p>The server is delivering only part of the resource due to a range header sent by the client.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>207 Multi-Status</h3>
+                <p>The message body that follows is an XML message and can contain a number of separate response codes. For WebDav.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>208 Already Reported</h3>
+                <p>The members of a DAV binding have already been enumerated in a preceding part of the (multistatus) response. For WebDav.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>226 IM Used</h3>
+                <p>The server has fulfilled a request for the resource, and the response is a representation of the result.</p>
+            </div>
+        </div>
+            <!-- 2xx codes end here -->
+
+            <!-- 3xx codes start here -->
+        <div class="status-code-group">
+            <h2>3xx - Redirection</h2>
+            <div class="status-code">
+                <h3>300 Multiple Choices</h3>
+                <p>Indicates multiple options for the resource that the client may follow.</p>
+            </div>
+            <div class="status-code">
+                <h3>301 Moved Permanently</h3>
+                <p>This and all future requests should be directed to the given URI.</p>
+            </div>
+            <div class="status-code">
+                <h3>302 Found</h3>
+                <p>Redirect to another URL. This is an example of industry practice contradicting the standard.</p>
+            </div>
+            <div class="status-code">
+                <h3>303 See Other</h3>
+                <p>The response to the request can be found under another URI using a GET method.</p>
+            </div>
+            <div class="status-code">
+                <h3>304 Not Modified</h3>
+                <p>Indicates that the resource has not been modified since the version specified by the request headers.</p>
+            </div>
+            <div class="status-code">
+                <h3>305 Use Proxy</h3>
+                <p>The requested resource is available only through a proxy, the address for which is provided in the response.</p>
+            </div>
+            <div class="status-code">
+                <h3>306 Switch Proxy</h3>
+                <p>No longer used. Originally meant 'Subsequent requests should use the specified proxy.'</p>
+            </div>
+            <div class="status-code">
+                <h3>307 Temporary Redirect</h3>
+                <p>In this case, the request should be repeated with another URI; however, future requests should still use the original URI.</p>
+            </div>
+            <div class="status-code">
+                <h3>308 Permanent Redirect</h3>
+                <p>The request and all future requests should be repeated using another URI.</p>
+            </div>
+            <!-- 3xx codes end here -->
+
+            <!-- 4xx codes start here -->
+
+            <div class="status-code-group">
+                <h2>4xx - Client Error</h2>
+                
+                <div class="status-code">
+                    <h3>400 Bad Request</h3>
+                    <p>The server cannot or will not process the request due to an apparent client error.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>401 Unauthorized</h3>
+                    <p>Similar to 403 Forbidden, but specifically for use when authentication is required and has failed or has not yet been provided.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>402 Payment Required</h3>
+                    <p>Reserved for future use. The original intention was that this code might be used as part of some form of digital cash or micropayment scheme.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>403 Forbidden</h3>
+                    <p>The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>404 Not Found</h3>
+                    <p>The requested resource could not be found but may be available in the future.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>405 Method Not Allowed</h3>
+                    <p>A request method is not supported for the requested resource.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>406 Not Acceptable</h3>
+                    <p>The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>407 Proxy Authentication Required</h3>
+                    <p>The client must first authenticate itself with the proxy.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>408 Request Timeout</h3>
+                    <p>The server timed out waiting for the request.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>409 Conflict</h3>
+                    <p>Indicates that the request could not be processed because of conflict in the request, such as an edit conflict.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>410 Gone</h3>
+                    <p>Indicates that the resource requested is no longer available and will not be available again.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>411 Length Required</h3>
+                    <p>The request did not specify the length of its content, which is required by the requested resource.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>412 Precondition Failed</h3>
+                    <p>The server does not meet one of the preconditions that the requester put on the request.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>413 Payload Too Large</h3>
+                    <p>The request is larger than the server is willing or able to process.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>414 URI Too Long</h3>
+                    <p>The URI provided was too long for the server to process.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>415 Unsupported Media Type</h3>
+                    <p>The request entity has a media type which the server or resource does not support.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>416 Range Not Satisfiable</h3>
+                    <p>The client has asked for a portion of the file, but the server cannot supply that portion.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>417 Expectation Failed</h3>
+                    <p>The server cannot meet the requirements of the Expect request-header field.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>418 I'm a teapot</h3>
+                    <p>The server refuses the attempt to brew coffee with a teapot.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>421 Misdirected Request</h3>
+                    <p>The request was directed at a server that is not able to produce a response.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>422 Unprocessable Entity</h3>
+                    <p>The request was well-formed but was unable to be followed due to semantic errors.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>423 Locked</h3>
+                    <p>The resource that is being accessed is locked.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>424 Failed Dependency</h3>
+                    <p>The request failed due to failure of a previous request.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>425 Too Early</h3>
+                    <p>Indicates that the server is unwilling to risk processing a request that might be replayed.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>426 Upgrade Required</h3>
+                    <p>The client should switch to a different protocol such as TLS/1.0.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>428 Precondition Required</h3>
+                    <p>The origin server requires the request to be conditional.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>429 Too Many Requests</h3>
+                    <p>The user has sent too many requests in a given amount of time.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>431 Request Header Fields Too Large</h3>
+                    <p>The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.</p>
+                </div>
+                
+                <div class="status-code">
+                    <h3>451 Unavailable For Legal Reasons</h3>
+                    <p>A server operator has received a legal demand to deny access to a resource or to a set of resources that includes the requested resource.</p>
+                </div>
+            </div>
+            
+            <!-- 4xx codes end here -->
+
+            <!-- 5xx codes start here -->
+        <div class="status-code-group">
+            <h2>5xx - Server Error</h2>
+            
+            <div class="status-code">
+                <h3>500 Internal Server Error</h3>
+                <p>A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>501 Not Implemented</h3>
+                <p>The server either does not recognize the request method, or it lacks the ability to fulfill the request.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>502 Bad Gateway</h3>
+                <p>The server was acting as a gateway or proxy and received an invalid response from the upstream server.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>503 Service Unavailable</h3>
+                <p>The server is currently unavailable (because it is overloaded or down for maintenance).</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>504 Gateway Timeout</h3>
+                <p>The server was acting as a gateway or proxy and did not receive a timely response from the upstream server.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>505 HTTP Version Not Supported</h3>
+                <p>The server does not support the HTTP protocol version used in the request.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>506 Variant Also Negotiates</h3>
+                <p>Transparent content negotiation for the request results in a circular reference.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>507 Insufficient Storage</h3>
+                <p>The server is unable to store the representation needed to complete the request.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>508 Loop Detected</h3>
+                <p>The server detected an infinite loop while processing the request.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>510 Not Extended</h3>
+                <p>Further extensions to the request are required for the server to fulfill it.</p>
+            </div>
+            
+            <div class="status-code">
+                <h3>511 Network Authentication Required</h3>
+                <p>The client needs to authenticate to gain network access.</p>
+            </div>
+        </div>        
+            <!-- 5xx codes end here -->
+    </div>
+    <footer style="text-align: center; padding: 20px 0; background-color: #333; color: white;">
+        <p>&copy; 2023 All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
