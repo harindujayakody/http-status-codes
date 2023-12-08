@@ -1,4 +1,5 @@
-![Alt text](image.png)
+![image](https://github.com/harindujayakody/http-status-codes/assets/9878813/3b21db40-8a6e-407a-b86f-89bb8fd2f2bb)
+
 
 # HTTP Status Codes Guide
 
