@@ -1,3 +1,5 @@
+![Alt text](image.png)
+
 # HTTP Status Codes Guide
 
 ## Introduction
