@@ -1,375 +1,1268 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HTTP Status Codes</title>
-    <meta name="description" content="Explore our comprehensive guide to HTTP Status Codes. Understand the meanings and applications of each status code for effective web development and troubleshooting.">
+    <title>HTTP Status Codes Guide | Comprehensive Developer Reference</title>
+    <meta name="description" content="Explore the ultimate HTTP Status Codes reference guide for web developers, sysadmins, and API architects. Search, filter, inspect response headers, and copy code snippets.">
     <link rel="canonical" href="https://status-codes.codekits.info/">
-    <meta property="og:title" content="HTTP Status Codes Guide - Comprehensive Resource">
-    <meta property="og:description" content="Learn everything about HTTP Status Codes for effective web development and troubleshooting.">
-    <meta property="og:image" content="http://www.yourwebsite.com/images/og-image.jpg">
-    <meta property="og:url" content="http://www.yourwebsite.com/http-status-codes-guide">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="HTTP Status Codes Guide - Comprehensive Developer Resource">
+    <meta property="og:description" content="Explore HTTP status codes, meanings, API usage, and response examples for effective web development.">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HTTP Status Codes Guide - Comprehensive Resource">
-    <meta name="twitter:description" content="Explore our in-depth guide to understand HTTP Status Codes for web development.">
-    <meta name="twitter:image" content="http://www.yourwebsite.com/images/twitter-card-image.jpg">
-
-    <!-- Stylesheet here -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Favicon & Stylesheets -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="search.js"></script>
-
+    
+    <!-- Script -->
+    <script src="search.js" defer></script>
 </head>
 <body>
-    <section style="text-align: center; padding: 60px 20px; background-color: #1a1a1a; color: #f0f0f0;">
-        <h1 style="font-size: 2.5em; margin-bottom: 20px;">HTTP Status Codes Guide</h1>
-        <p style="font-size: 1.2em; max-width: 800px; margin: auto;">Dive into the world of HTTP Status Codes with our comprehensive guide. Understand each status code's purpose and usage in web communication. Perfect for developers, sysadmins, and tech enthusiasts, this guide is your go-to resource for troubleshooting and mastering HTTP responses, ranging from informational to error codes.</p>
+
+    <!-- Hero Header -->
+    <header class="hero-header">
+        <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            Developer Reference Guide
+        </div>
+        <h1 class="hero-title">HTTP Status Codes</h1>
+        <p class="hero-description">
+            Your interactive cheatsheet for HTTP response status codes. Search instantly, filter by category, pin favorites, and copy ready-to-use code snippets for your backend & frontend services.
+        </p>
+
+        <!-- Stat Counter Chips -->
+        <div class="hero-stats">
+            <div class="stat-chip">Total Codes: <strong>63</strong></div>
+            <div class="stat-chip">1xx Informational: <strong>4</strong></div>
+            <div class="stat-chip">2xx Success: <strong>10</strong></div>
+            <div class="stat-chip">3xx Redirection: <strong>9</strong></div>
+            <div class="stat-chip">4xx Client Error: <strong>29</strong></div>
+            <div class="stat-chip">5xx Server Error: <strong>11</strong></div>
+        </div>
+    </header>
+
+    <!-- Sticky Control Panel (Search Bar & Filters) -->
+    <section class="sticky-controls">
+        <div class="controls-container">
+            <!-- Search Bar -->
+            <div class="search-wrapper">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input 
+                    type="text" 
+                    id="searchBox" 
+                    class="search-input" 
+                    placeholder="Search by status code or name (e.g. 404, Teapot, Unauthorized)..." 
+                    oninput="filterStatusCodes()" 
+                    autocomplete="off"
+                    aria-label="Search status codes"
+                >
+                <span class="shortcut-badge">/</span>
+                <button id="clearSearchBtn" class="clear-btn" title="Clear search">×</button>
+            </div>
+
+            <!-- Filter Pills -->
+            <div class="category-filter" role="tablist">
+                <button class="filter-pill active" data-filter="all" onclick="setCategory('all', this)">
+                    All <span class="pill-count">63</span>
+                </button>
+                <button class="filter-pill" data-filter="starred" onclick="setCategory('starred', this)">
+                    ★ Starred <span class="pill-count">0</span>
+                </button>
+                <button class="filter-pill" data-filter="1xx" onclick="setCategory('1xx', this)">
+                    1xx Info <span class="pill-count">4</span>
+                </button>
+                <button class="filter-pill" data-filter="2xx" onclick="setCategory('2xx', this)">
+                    2xx Success <span class="pill-count">10</span>
+                </button>
+                <button class="filter-pill" data-filter="3xx" onclick="setCategory('3xx', this)">
+                    3xx Redirect <span class="pill-count">9</span>
+                </button>
+                <button class="filter-pill" data-filter="4xx" onclick="setCategory('4xx', this)">
+                    4xx Client Error <span class="pill-count">29</span>
+                </button>
+                <button class="filter-pill" data-filter="5xx" onclick="setCategory('5xx', this)">
+                    5xx Server Error <span class="pill-count">11</span>
+                </button>
+            </div>
+        </div>
     </section>
 
-    <div style="text-align: center; margin: 30px;">
-        <input type="text" id="searchBox" placeholder="Search a status code..." onkeyup="handleKeyPress(event)">
-        <button onclick="searchStatusCodes()" id="searchButton">Search</button>
-    </div>
-    
-
-    <div class="container">
-        <!-- 1xx codes start here -->
-        <div class="status-code-group">
-            <h2>1xx - Informational</h2>
-            <div class="status-code">
-                <h3>100 Continue</h3>
-                <p>Waiting for the client to emit the body of the request.</p>
-            </div>
-            <div class="status-code">
-                <h3>101 Switching Protocols</h3>
-                <p>The server has agreed to change protocol.</p>
-            </div>
-            <div class="status-code">
-                <h3>102 Processing</h3>
-                <p>The server is processing the request, but no response is available yet. For WebDav.</p>
-            </div>
-            <div class="status-code">
-                <h3>103 Early Hints</h3>
-                <p>The server returns some response headers before final HTTP message.</p>
-            </div>
-            <!-- 1xx codes end here -->
+    <!-- Main Content Container -->
+    <main class="main-container">
+        
+        <!-- Empty State Container -->
+        <div id="emptyState" class="empty-state">
+            <div class="empty-icon">🔍</div>
+            <h3 class="empty-title">No matching HTTP status codes found</h3>
+            <p class="empty-subtitle">Try searching for a different number or keyword, or reset your filters.</p>
+            <button class="reset-search-btn" onclick="resetSearch()">Reset Filters & Search</button>
         </div>
 
-            <!-- 2xx codes start here -->
-        <div class="status-code-group">
-            <h2>2xx - Success</h2>
-            
-            <div class="status-code">
-                <h3>200 OK</h3>
-                <p>Standard response for successful HTTP requests.</p>
+        <!-- 1xx Informational -->
+        <section class="group-section" data-cat="1xx">
+            <div class="group-header" data-cat="1xx">
+                <h2 class="group-title">1xx — Informational</h2>
+                <span class="group-count">(4 codes)</span>
+            </div>
+            <div class="cards-grid">
+                <div class="status-card" data-cat="1xx" data-code="100" data-title="Continue" data-desc="Waiting for the client to emit the body of the request.">
+                    <div class="card-top">
+                        <span class="code-badge">100</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="100" onclick="toggleFavorite('100', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('100', 'Continue', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">100 Continue</h3>
+                        <p class="card-desc">Waiting for the client to emit the body of the request.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('100', 'Continue', 'Waiting for the client to emit the body of the request.', '1xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="1xx" data-code="101" data-title="Switching Protocols" data-desc="The server has agreed to change protocol.">
+                    <div class="card-top">
+                        <span class="code-badge">101</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="101" onclick="toggleFavorite('101', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('101', 'Switching Protocols', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">101 Switching Protocols</h3>
+                        <p class="card-desc">The server has agreed to change protocol.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('101', 'Switching Protocols', 'The server has agreed to change protocol.', '1xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="1xx" data-code="102" data-title="Processing" data-desc="The server is processing the request, but no response is available yet. For WebDAV.">
+                    <div class="card-top">
+                        <span class="code-badge">102</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="102" onclick="toggleFavorite('102', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('102', 'Processing', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">102 Processing</h3>
+                        <p class="card-desc">The server is processing the request, but no response is available yet. For WebDAV.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('102', 'Processing', 'The server is processing the request, but no response is available yet. For WebDAV.', '1xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="1xx" data-code="103" data-title="Early Hints" data-desc="The server returns some response headers before final HTTP message.">
+                    <div class="card-top">
+                        <span class="code-badge">103</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="103" onclick="toggleFavorite('103', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('103', 'Early Hints', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">103 Early Hints</h3>
+                        <p class="card-desc">The server returns some response headers before final HTTP message.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('103', 'Early Hints', 'The server returns some response headers before final HTTP message.', '1xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2xx Success -->
+        <section class="group-section" data-cat="2xx">
+            <div class="group-header" data-cat="2xx">
+                <h2 class="group-title">2xx — Success</h2>
+                <span class="group-count">(10 codes)</span>
+            </div>
+            <div class="cards-grid">
+                <div class="status-card" data-cat="2xx" data-code="200" data-title="OK" data-desc="Standard response for successful HTTP requests.">
+                    <div class="card-top">
+                        <span class="code-badge">200</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="200" onclick="toggleFavorite('200', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('200', 'OK', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">200 OK</h3>
+                        <p class="card-desc">Standard response for successful HTTP requests.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('200', 'OK', 'Standard response for successful HTTP requests.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="2xx" data-code="201" data-title="Created" data-desc="The request has been fulfilled, resulting in the creation of a new resource.">
+                    <div class="card-top">
+                        <span class="code-badge">201</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="201" onclick="toggleFavorite('201', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('201', 'Created', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">201 Created</h3>
+                        <p class="card-desc">The request has been fulfilled, resulting in the creation of a new resource.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('201', 'Created', 'The request has been fulfilled, resulting in the creation of a new resource.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="2xx" data-code="202" data-title="Accepted" data-desc="The request has been accepted for processing, but the processing has not been completed.">
+                    <div class="card-top">
+                        <span class="code-badge">202</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="202" onclick="toggleFavorite('202', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('202', 'Accepted', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">202 Accepted</h3>
+                        <p class="card-desc">The request has been accepted for processing, but the processing has not been completed.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('202', 'Accepted', 'The request has been accepted for processing, but the processing has not been completed.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="2xx" data-code="203" data-title="Non-Authoritative Information" data-desc="The request is successful but the content of the original request has been modified by a transforming proxy.">
+                    <div class="card-top">
+                        <span class="code-badge">203</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="203" onclick="toggleFavorite('203', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('203', 'Non-Authoritative Information', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">203 Non-Authoritative Info</h3>
+                        <p class="card-desc">The request is successful but the content was modified by a proxy.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('203', 'Non-Authoritative Information', 'The request is successful but the content of the original request has been modified by a transforming proxy.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="2xx" data-code="204" data-title="No Content" data-desc="The server successfully processed the request and is not returning any content.">
+                    <div class="card-top">
+                        <span class="code-badge">204</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="204" onclick="toggleFavorite('204', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('204', 'No Content', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">204 No Content</h3>
+                        <p class="card-desc">The server successfully processed the request and is not returning any content.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('204', 'No Content', 'The server successfully processed the request and is not returning any content.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="2xx" data-code="205" data-title="Reset Content" data-desc="The server indicates to reinitialize the document view which sent this request.">
+                    <div class="card-top">
+                        <span class="code-badge">205</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="205" onclick="toggleFavorite('205', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('205', 'Reset Content', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">205 Reset Content</h3>
+                        <p class="card-desc">The server indicates to reinitialize the document view which sent this request.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('205', 'Reset Content', 'The server indicates to reinitialize the document view which sent this request.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="2xx" data-code="206" data-title="Partial Content" data-desc="The server is delivering only part of the resource due to a range header sent by the client.">
+                    <div class="card-top">
+                        <span class="code-badge">206</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="206" onclick="toggleFavorite('206', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('206', 'Partial Content', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">206 Partial Content</h3>
+                        <p class="card-desc">The server is delivering only part of the resource due to a range header.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('206', 'Partial Content', 'The server is delivering only part of the resource due to a range header sent by the client.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="2xx" data-code="207" data-title="Multi-Status" data-desc="The message body that follows is an XML message and can contain a number of separate response codes. For WebDAV.">
+                    <div class="card-top">
+                        <span class="code-badge">207</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="207" onclick="toggleFavorite('207', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('207', 'Multi-Status', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">207 Multi-Status</h3>
+                        <p class="card-desc">XML message body containing multiple separate response codes. For WebDAV.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('207', 'Multi-Status', 'The message body that follows is an XML message and can contain a number of separate response codes. For WebDAV.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="2xx" data-code="208" data-title="Already Reported" data-desc="The members of a DAV binding have already been enumerated in a preceding part of the response. For WebDAV.">
+                    <div class="card-top">
+                        <span class="code-badge">208</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="208" onclick="toggleFavorite('208', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('208', 'Already Reported', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">208 Already Reported</h3>
+                        <p class="card-desc">Members of a DAV binding have already been enumerated in a preceding part of response.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('208', 'Already Reported', 'The members of a DAV binding have already been enumerated in a preceding part of the (multistatus) response. For WebDAV.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="2xx" data-code="226" data-title="IM Used" data-desc="The server has fulfilled a request for the resource, and the response is a representation of the result.">
+                    <div class="card-top">
+                        <span class="code-badge">226</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="226" onclick="toggleFavorite('226', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('226', 'IM Used', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">226 IM Used</h3>
+                        <p class="card-desc">The server fulfilled a request for the resource representation result.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('226', 'IM Used', 'The server has fulfilled a request for the resource, and the response is a representation of the result.', '2xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3xx Redirection -->
+        <section class="group-section" data-cat="3xx">
+            <div class="group-header" data-cat="3xx">
+                <h2 class="group-title">3xx — Redirection</h2>
+                <span class="group-count">(9 codes)</span>
+            </div>
+            <div class="cards-grid">
+                <div class="status-card" data-cat="3xx" data-code="300" data-title="Multiple Choices" data-desc="Indicates multiple options for the resource that the client may follow.">
+                    <div class="card-top">
+                        <span class="code-badge">300</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="300" onclick="toggleFavorite('300', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('300', 'Multiple Choices', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">300 Multiple Choices</h3>
+                        <p class="card-desc">Indicates multiple options for the resource that the client may follow.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('300', 'Multiple Choices', 'Indicates multiple options for the resource that the client may follow.', '3xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="3xx" data-code="301" data-title="Moved Permanently" data-desc="This and all future requests should be directed to the given URI.">
+                    <div class="card-top">
+                        <span class="code-badge">301</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="301" onclick="toggleFavorite('301', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('301', 'Moved Permanently', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">301 Moved Permanently</h3>
+                        <p class="card-desc">This and all future requests should be directed to the given URI.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('301', 'Moved Permanently', 'This and all future requests should be directed to the given URI.', '3xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="3xx" data-code="302" data-title="Found" data-desc="Redirect to another URL. Industry practice contradicting the HTTP standard.">
+                    <div class="card-top">
+                        <span class="code-badge">302</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="302" onclick="toggleFavorite('302', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('302', 'Found', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">302 Found</h3>
+                        <p class="card-desc">Temporary redirect to another URI.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('302', 'Found', 'Redirect to another URL. This is an example of industry practice contradicting the standard.', '3xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="3xx" data-code="303" data-title="See Other" data-desc="The response to the request can be found under another URI using a GET method.">
+                    <div class="card-top">
+                        <span class="code-badge">303</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="303" onclick="toggleFavorite('303', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('303', 'See Other', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">303 See Other</h3>
+                        <p class="card-desc">Response can be found under another URI using a GET request.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('303', 'See Other', 'The response to the request can be found under another URI using a GET method.', '3xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="3xx" data-code="304" data-title="Not Modified" data-desc="Indicates that the resource has not been modified since the version specified by the request headers.">
+                    <div class="card-top">
+                        <span class="code-badge">304</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="304" onclick="toggleFavorite('304', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('304', 'Not Modified', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">304 Not Modified</h3>
+                        <p class="card-desc">Resource has not been modified since the cached version.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('304', 'Not Modified', 'Indicates that the resource has not been modified since the version specified by the request headers.', '3xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="3xx" data-code="305" data-title="Use Proxy" data-desc="The requested resource is available only through a proxy provided in response.">
+                    <div class="card-top">
+                        <span class="code-badge">305</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="305" onclick="toggleFavorite('305', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('305', 'Use Proxy', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">305 Use Proxy</h3>
+                        <p class="card-desc">Resource available only through specified proxy.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('305', 'Use Proxy', 'The requested resource is available only through a proxy, the address for which is provided in the response.', '3xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="3xx" data-code="306" data-title="Switch Proxy" data-desc="No longer used. Originally meant subsequent requests should use specified proxy.">
+                    <div class="card-top">
+                        <span class="code-badge">306</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="306" onclick="toggleFavorite('306', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('306', 'Switch Proxy', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">306 Switch Proxy</h3>
+                        <p class="card-desc">Deprecated status code. Formerly used for switching proxies.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('306', 'Switch Proxy', 'No longer used. Originally meant subsequent requests should use the specified proxy.', '3xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="3xx" data-code="307" data-title="Temporary Redirect" data-desc="Repeat request with another URI; future requests should still use original URI.">
+                    <div class="card-top">
+                        <span class="code-badge">307</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="307" onclick="toggleFavorite('307', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('307', 'Temporary Redirect', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">307 Temporary Redirect</h3>
+                        <p class="card-desc">Repeat request with another URI, retaining original HTTP method.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('307', 'Temporary Redirect', 'In this case, the request should be repeated with another URI; however, future requests should still use the original URI.', '3xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="3xx" data-code="308" data-title="Permanent Redirect" data-desc="The request and all future requests should be repeated using another URI.">
+                    <div class="card-top">
+                        <span class="code-badge">308</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="308" onclick="toggleFavorite('308', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('308', 'Permanent Redirect', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">308 Permanent Redirect</h3>
+                        <p class="card-desc">Permanent redirect preserving HTTP method across requests.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('308', 'Permanent Redirect', 'The request and all future requests should be repeated using another URI.', '3xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4xx Client Error -->
+        <section class="group-section" data-cat="4xx">
+            <div class="group-header" data-cat="4xx">
+                <h2 class="group-title">4xx — Client Error</h2>
+                <span class="group-count">(29 codes)</span>
+            </div>
+            <div class="cards-grid">
+                <div class="status-card" data-cat="4xx" data-code="400" data-title="Bad Request" data-desc="The server cannot or will not process the request due to an apparent client error.">
+                    <div class="card-top">
+                        <span class="code-badge">400</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="400" onclick="toggleFavorite('400', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('400', 'Bad Request', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">400 Bad Request</h3>
+                        <p class="card-desc">Invalid request syntax, malformed framing, or deceptive routing.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('400', 'Bad Request', 'The server cannot or will not process the request due to an apparent client error.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="401" data-title="Unauthorized" data-desc="Authentication is required and has failed or has not yet been provided.">
+                    <div class="card-top">
+                        <span class="code-badge">401</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="401" onclick="toggleFavorite('401', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('401', 'Unauthorized', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">401 Unauthorized</h3>
+                        <p class="card-desc">Missing or invalid authentication credentials.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('401', 'Unauthorized', 'Similar to 403 Forbidden, but specifically for use when authentication is required and has failed or has not yet been provided.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="402" data-title="Payment Required" data-desc="Reserved for future use. Intended for digital cash or micropayment schemes.">
+                    <div class="card-top">
+                        <span class="code-badge">402</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="402" onclick="toggleFavorite('402', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('402', 'Payment Required', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">402 Payment Required</h3>
+                        <p class="card-desc">Reserved for digital cash or micropayment schemes.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('402', 'Payment Required', 'Reserved for future use. The original intention was that this code might be used as part of some form of digital cash or micropayment scheme.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="403" data-title="Forbidden" data-desc="The request was valid, but the server is refusing action due to insufficient permissions.">
+                    <div class="card-top">
+                        <span class="code-badge">403</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="403" onclick="toggleFavorite('403', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('403', 'Forbidden', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">403 Forbidden</h3>
+                        <p class="card-desc">Server understood request but refuses to authorize access.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('403', 'Forbidden', 'The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="404" data-title="Not Found" data-desc="The requested resource could not be found on the server.">
+                    <div class="card-top">
+                        <span class="code-badge">404</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="404" onclick="toggleFavorite('404', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('404', 'Not Found', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">404 Not Found</h3>
+                        <p class="card-desc">Requested endpoint or resource could not be located.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('404', 'Not Found', 'The requested resource could not be found but may be available in the future.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="405" data-title="Method Not Allowed" data-desc="A request method is not supported for the requested resource.">
+                    <div class="card-top">
+                        <span class="code-badge">405</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="405" onclick="toggleFavorite('405', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('405', 'Method Not Allowed', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">405 Method Not Allowed</h3>
+                        <p class="card-desc">HTTP method (GET, POST, etc.) is disabled for this endpoint.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('405', 'Method Not Allowed', 'A request method is not supported for the requested resource.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="406" data-title="Not Acceptable" data-desc="Resource generates content not acceptable according to Accept headers sent in request.">
+                    <div class="card-top">
+                        <span class="code-badge">406</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="406" onclick="toggleFavorite('406', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('406', 'Not Acceptable', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">406 Not Acceptable</h3>
+                        <p class="card-desc">Cannot produce a response matching client Accept headers.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('406', 'Not Acceptable', 'The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="407" data-title="Proxy Authentication Required" data-desc="The client must first authenticate itself with the proxy.">
+                    <div class="card-top">
+                        <span class="code-badge">407</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="407" onclick="toggleFavorite('407', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('407', 'Proxy Authentication Required', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">407 Proxy Auth Required</h3>
+                        <p class="card-desc">Client must authenticate with proxy before request processing.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('407', 'Proxy Authentication Required', 'The client must first authenticate itself with the proxy.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="408" data-title="Request Timeout" data-desc="The server timed out waiting for the request from the client.">
+                    <div class="card-top">
+                        <span class="code-badge">408</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="408" onclick="toggleFavorite('408', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('408', 'Request Timeout', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">408 Request Timeout</h3>
+                        <p class="card-desc">Server closed connection waiting for complete request body.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('408', 'Request Timeout', 'The server timed out waiting for the request.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="409" data-title="Conflict" data-desc="Request could not be processed because of conflict in request, such as an edit conflict.">
+                    <div class="card-top">
+                        <span class="code-badge">409</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="409" onclick="toggleFavorite('409', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('409', 'Conflict', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">409 Conflict</h3>
+                        <p class="card-desc">Resource state conflict (e.g. concurrent edits or duplicates).</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('409', 'Conflict', 'Indicates that the request could not be processed because of conflict in the request, such as an edit conflict.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="410" data-title="Gone" data-desc="Resource requested is no longer available and will not be available again.">
+                    <div class="card-top">
+                        <span class="code-badge">410</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="410" onclick="toggleFavorite('410', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('410', 'Gone', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">410 Gone</h3>
+                        <p class="card-desc">Resource permanently deleted with no forwarding address.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('410', 'Gone', 'Indicates that the resource requested is no longer available and will not be available again.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="411" data-title="Length Required" data-desc="The request did not specify the length of its content, which is required.">
+                    <div class="card-top">
+                        <span class="code-badge">411</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="411" onclick="toggleFavorite('411', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('411', 'Length Required', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">411 Length Required</h3>
+                        <p class="card-desc">Content-Length header missing in request.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('411', 'Length Required', 'The request did not specify the length of its content, which is required by the requested resource.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="412" data-title="Precondition Failed" data-desc="The server does not meet one of the preconditions specified in request headers.">
+                    <div class="card-top">
+                        <span class="code-badge">412</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="412" onclick="toggleFavorite('412', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('412', 'Precondition Failed', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">412 Precondition Failed</h3>
+                        <p class="card-desc">If-Match or If-Unmodified-Since precondition evaluated false.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('412', 'Precondition Failed', 'The server does not meet one of the preconditions that the requester put on the request.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="413" data-title="Payload Too Large" data-desc="The request entity is larger than the server is willing or able to process.">
+                    <div class="card-top">
+                        <span class="code-badge">413</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="413" onclick="toggleFavorite('413', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('413', 'Payload Too Large', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">413 Payload Too Large</h3>
+                        <p class="card-desc">Request payload exceeds server maximum size limits.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('413', 'Payload Too Large', 'The request is larger than the server is willing or able to process.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="414" data-title="URI Too Long" data-desc="The URI provided was too long for the server to process.">
+                    <div class="card-top">
+                        <span class="code-badge">414</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="414" onclick="toggleFavorite('414', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('414', 'URI Too Long', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">414 URI Too Long</h3>
+                        <p class="card-desc">URL query string exceeds maximum readable length.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('414', 'URI Too Long', 'The URI provided was too long for the server to process.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="415" data-title="Unsupported Media Type" data-desc="The request entity has a media format which the server does not support.">
+                    <div class="card-top">
+                        <span class="code-badge">415</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="415" onclick="toggleFavorite('415', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('415', 'Unsupported Media Type', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">415 Unsupported Media Type</h3>
+                        <p class="card-desc">Content-Type header format not accepted by server.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('415', 'Unsupported Media Type', 'The request entity has a media type which the server or resource does not support.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="416" data-title="Range Not Satisfiable" data-desc="Client asked for a portion of file, but server cannot supply that byte range.">
+                    <div class="card-top">
+                        <span class="code-badge">416</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="416" onclick="toggleFavorite('416', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('416', 'Range Not Satisfiable', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">416 Range Not Satisfiable</h3>
+                        <p class="card-desc">Requested byte range cannot be satisfied by resource.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('416', 'Range Not Satisfiable', 'The client has asked for a portion of the file, but the server cannot supply that portion.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="417" data-title="Expectation Failed" data-desc="Server cannot meet requirements of Expect request-header field.">
+                    <div class="card-top">
+                        <span class="code-badge">417</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="417" onclick="toggleFavorite('417', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('417', 'Expectation Failed', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">417 Expectation Failed</h3>
+                        <p class="card-desc">Server cannot fulfill Expect request header requirements.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('417', 'Expectation Failed', 'The server cannot meet the requirements of the Expect request-header field.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="418" data-title="I'm a teapot" data-desc="The server refuses the attempt to brew coffee with a teapot. (HTCPCP/1.0)">
+                    <div class="card-top">
+                        <span class="code-badge">418</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="418" onclick="toggleFavorite('418', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('418', 'Im a teapot', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">418 I'm a teapot 🫖</h3>
+                        <p class="card-desc">April Fools RFC 2324 hypertext coffee pot control protocol.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('418', 'Im a teapot', 'The server refuses the attempt to brew coffee with a teapot.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="421" data-title="Misdirected Request" data-desc="Request was directed at a server that is not able to produce a response.">
+                    <div class="card-top">
+                        <span class="code-badge">421</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="421" onclick="toggleFavorite('421', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('421', 'Misdirected Request', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">421 Misdirected Request</h3>
+                        <p class="card-desc">Server is not configured to respond for combined connection scheme.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('421', 'Misdirected Request', 'The request was directed at a server that is not able to produce a response.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="422" data-title="Unprocessable Entity" data-desc="Request was well-formed but unable to be followed due to semantic errors.">
+                    <div class="card-top">
+                        <span class="code-badge">422</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="422" onclick="toggleFavorite('422', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('422', 'Unprocessable Entity', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">422 Unprocessable Entity</h3>
+                        <p class="card-desc">Validation error in request payload (common in REST APIs).</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('422', 'Unprocessable Entity', 'The request was well-formed but was unable to be followed due to semantic errors.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="423" data-title="Locked" data-desc="The resource that is being accessed is locked. For WebDAV.">
+                    <div class="card-top">
+                        <span class="code-badge">423</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="423" onclick="toggleFavorite('423', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('423', 'Locked', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">423 Locked</h3>
+                        <p class="card-desc">Target resource is locked for edit/write operations. For WebDAV.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('423', 'Locked', 'The resource that is being accessed is locked.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="424" data-title="Failed Dependency" data-desc="The request failed due to failure of a previous request. For WebDAV.">
+                    <div class="card-top">
+                        <span class="code-badge">424</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="424" onclick="toggleFavorite('424', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('424', 'Failed Dependency', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">424 Failed Dependency</h3>
+                        <p class="card-desc">Request failed due to failure of dependent command.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('424', 'Failed Dependency', 'The request failed due to failure of a previous request.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="425" data-title="Too Early" data-desc="Server is unwilling to risk processing a request that might be replayed.">
+                    <div class="card-top">
+                        <span class="code-badge">425</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="425" onclick="toggleFavorite('425', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('425', 'Too Early', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">425 Too Early</h3>
+                        <p class="card-desc">Server refuses processing due to replay attack risks.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('425', 'Too Early', 'Indicates that the server is unwilling to risk processing a request that might be replayed.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="426" data-title="Upgrade Required" data-desc="The client should switch to a different protocol such as TLS/1.0.">
+                    <div class="card-top">
+                        <span class="code-badge">426</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="426" onclick="toggleFavorite('426', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('426', 'Upgrade Required', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">426 Upgrade Required</h3>
+                        <p class="card-desc">Client must upgrade to newer protocol specified in header.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('426', 'Upgrade Required', 'The client should switch to a different protocol such as TLS/1.0.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="428" data-title="Precondition Required" data-desc="The origin server requires the request to be conditional to prevent conflict.">
+                    <div class="card-top">
+                        <span class="code-badge">428</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="428" onclick="toggleFavorite('428', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('428', 'Precondition Required', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">428 Precondition Required</h3>
+                        <p class="card-desc">Conditional headers required to avoid lost update problem.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('428', 'Precondition Required', 'The origin server requires the request to be conditional.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="429" data-title="Too Many Requests" data-desc="The user has sent too many requests in a given amount of time (Rate limited).">
+                    <div class="card-top">
+                        <span class="code-badge">429</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="429" onclick="toggleFavorite('429', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('429', 'Too Many Requests', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">429 Too Many Requests</h3>
+                        <p class="card-desc">API rate limit exceeded. Retry after specified window.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('429', 'Too Many Requests', 'The user has sent too many requests in a given amount of time.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="431" data-title="Request Header Fields Too Large" data-desc="Server is unwilling to process request because individual or total headers are too large.">
+                    <div class="card-top">
+                        <span class="code-badge">431</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="431" onclick="toggleFavorite('431', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('431', 'Request Header Fields Too Large', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">431 Headers Too Large</h3>
+                        <p class="card-desc">HTTP headers exceed maximum buffer size limit.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('431', 'Request Header Fields Too Large', 'The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="4xx" data-code="451" data-title="Unavailable For Legal Reasons" data-desc="Resource access denied due to legal demand or censorship order.">
+                    <div class="card-top">
+                        <span class="code-badge">451</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="451" onclick="toggleFavorite('451', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('451', 'Unavailable For Legal Reasons', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">451 Legal Reasons</h3>
+                        <p class="card-desc">Access blocked due to legal demand, DMCA, or censorship.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('451', 'Unavailable For Legal Reasons', 'A server operator has received a legal demand to deny access to a resource or to a set of resources that includes the requested resource.', '4xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5xx Server Error -->
+        <section class="group-section" data-cat="5xx">
+            <div class="group-header" data-cat="5xx">
+                <h2 class="group-title">5xx — Server Error</h2>
+                <span class="group-count">(11 codes)</span>
+            </div>
+            <div class="cards-grid">
+                <div class="status-card" data-cat="5xx" data-code="500" data-title="Internal Server Error" data-desc="Generic error message when an unexpected condition was encountered on server.">
+                    <div class="card-top">
+                        <span class="code-badge">500</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="500" onclick="toggleFavorite('500', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('500', 'Internal Server Error', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">500 Internal Error</h3>
+                        <p class="card-desc">Unhandled exception or generic server execution error.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('500', 'Internal Server Error', 'A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="501" data-title="Not Implemented" data-desc="The server does not recognize request method, or lacks ability to fulfill request.">
+                    <div class="card-top">
+                        <span class="code-badge">501</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="501" onclick="toggleFavorite('501', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('501', 'Not Implemented', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">501 Not Implemented</h3>
+                        <p class="card-desc">Server lacks capability or endpoint handler for method.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('501', 'Not Implemented', 'The server either does not recognize the request method, or it lacks the ability to fulfill the request.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="502" data-title="Bad Gateway" data-desc="Server acting as gateway received an invalid response from upstream server.">
+                    <div class="card-top">
+                        <span class="code-badge">502</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="502" onclick="toggleFavorite('502', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('502', 'Bad Gateway', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">502 Bad Gateway</h3>
+                        <p class="card-desc">Reverse proxy or gateway received invalid upstream response.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('502', 'Bad Gateway', 'The server was acting as a gateway or proxy and received an invalid response from the upstream server.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="503" data-title="Service Unavailable" data-desc="The server is currently unavailable due to overload or maintenance.">
+                    <div class="card-top">
+                        <span class="code-badge">503</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="503" onclick="toggleFavorite('503', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('503', 'Service Unavailable', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">503 Service Unavailable</h3>
+                        <p class="card-desc">Server is down for scheduled maintenance or overloaded.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('503', 'Service Unavailable', 'The server is currently unavailable (because it is overloaded or down for maintenance).', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="504" data-title="Gateway Timeout" data-desc="Gateway or proxy server did not receive timely response from upstream.">
+                    <div class="card-top">
+                        <span class="code-badge">504</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="504" onclick="toggleFavorite('504', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('504', 'Gateway Timeout', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">504 Gateway Timeout</h3>
+                        <p class="card-desc">Upstream application server timed out responding to proxy.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('504', 'Gateway Timeout', 'The server was acting as a gateway or proxy and did not receive a timely response from the upstream server.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="505" data-title="HTTP Version Not Supported" data-desc="The server does not support the HTTP protocol version used in the request.">
+                    <div class="card-top">
+                        <span class="code-badge">505</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="505" onclick="toggleFavorite('505', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('505', 'HTTP Version Not Supported', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">505 Version Not Supported</h3>
+                        <p class="card-desc">HTTP protocol version in request is unsupported by server.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('505', 'HTTP Version Not Supported', 'The server does not support the HTTP protocol version used in the request.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="506" data-title="Variant Also Negotiates" data-desc="Transparent content negotiation for request results in circular reference.">
+                    <div class="card-top">
+                        <span class="code-badge">506</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="506" onclick="toggleFavorite('506', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('506', 'Variant Also Negotiates', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">506 Variant Negotiates</h3>
+                        <p class="card-desc">Content negotiation configuration loop detected.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('506', 'Variant Also Negotiates', 'Transparent content negotiation for the request results in a circular reference.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="507" data-title="Insufficient Storage" data-desc="The server is unable to store representation needed to complete request.">
+                    <div class="card-top">
+                        <span class="code-badge">507</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="507" onclick="toggleFavorite('507', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('507', 'Insufficient Storage', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">507 Insufficient Storage</h3>
+                        <p class="card-desc">Server disk or quota exhausted. For WebDAV.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('507', 'Insufficient Storage', 'The server is unable to store the representation needed to complete the request.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="508" data-title="Loop Detected" data-desc="The server detected an infinite loop while processing request. For WebDAV.">
+                    <div class="card-top">
+                        <span class="code-badge">508</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="508" onclick="toggleFavorite('508', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('508', 'Loop Detected', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">508 Loop Detected</h3>
+                        <p class="card-desc">Infinite redirect loop encountered during processing.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('508', 'Loop Detected', 'The server detected an infinite loop while processing the request.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="510" data-title="Not Extended" data-desc="Further extensions to request are required for server to fulfill it.">
+                    <div class="card-top">
+                        <span class="code-badge">510</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="510" onclick="toggleFavorite('510', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('510', 'Not Extended', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">510 Not Extended</h3>
+                        <p class="card-desc">Mandatory HTTP extension missing in client request.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('510', 'Not Extended', 'Further extensions to the request are required for the server to fulfill it.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+
+                <div class="status-card" data-cat="5xx" data-code="511" data-title="Network Authentication Required" data-desc="The client needs to authenticate to gain network access.">
+                    <div class="card-top">
+                        <span class="code-badge">511</span>
+                        <div class="card-actions-top">
+                            <button class="icon-btn favorite" data-code="511" onclick="toggleFavorite('511', event)" title="Star status code">★</button>
+                            <button class="icon-btn" onclick="copyCode('511', 'Network Auth Required', event)" title="Copy status string">📋</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="card-title">511 Network Auth Required</h3>
+                        <p class="card-desc">Captive portal login or network authentication required.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <button class="inspect-btn" onclick="openInspectModal('511', 'Network Auth Required', 'The client needs to authenticate to gain network access.', '5xx')">Inspect & Snippets →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Code Snippets / Detail Modal Drawer -->
+    <div id="inspectModal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-code-title">
+                    <span id="modalCodeBadge" class="code-badge">200</span>
+                    <h2 id="modalTitle" style="font-size: 1.5rem; font-weight: 700;">OK</h2>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal()">×</button>
             </div>
             
-            <div class="status-code">
-                <h3>201 Created</h3>
-                <p>The request has been fulfilled, resulting in the creation of a new resource.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>202 Accepted</h3>
-                <p>The request has been accepted for processing, but the processing has not been completed.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>203 Non-Authoritative Information</h3>
-                <p>The request is successful but the content of the original request has been modified by a transforming proxy.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>204 No Content</h3>
-                <p>The server successfully processed the request and is not returning any content.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>205 Reset Content</h3>
-                <p>The server indicates to reinitialize the document view which sent this request.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>206 Partial Content</h3>
-                <p>The server is delivering only part of the resource due to a range header sent by the client.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>207 Multi-Status</h3>
-                <p>The message body that follows is an XML message and can contain a number of separate response codes. For WebDav.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>208 Already Reported</h3>
-                <p>The members of a DAV binding have already been enumerated in a preceding part of the (multistatus) response. For WebDav.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>226 IM Used</h3>
-                <p>The server has fulfilled a request for the resource, and the response is a representation of the result.</p>
+            <div class="modal-body">
+                <div>
+                    <div class="modal-section-title">Description</div>
+                    <p id="modalDesc" style="color: var(--text-secondary); line-height: 1.6;"></p>
+                </div>
+
+                <div>
+                    <div class="modal-section-title">Implementation Code Snippets</div>
+                    <div class="snippet-tabs">
+                        <button class="snippet-tab active" data-lang="js" onclick="setSnippetTab('js')">JavaScript</button>
+                        <button class="snippet-tab" data-lang="curl" onclick="setSnippetTab('curl')">cURL</button>
+                        <button class="snippet-tab" data-lang="python" onclick="setSnippetTab('python')">Python</button>
+                        <button class="snippet-tab" data-lang="go" onclick="setSnippetTab('go')">Go</button>
+                    </div>
+
+                    <div class="code-box-wrapper">
+                        <pre id="modalCodeBlock" class="code-block"></pre>
+                        <button class="code-copy-btn" onclick="copyModalSnippet()">Copy Code</button>
+                    </div>
+                </div>
             </div>
         </div>
-            <!-- 2xx codes end here -->
-
-            <!-- 3xx codes start here -->
-        <div class="status-code-group">
-            <h2>3xx - Redirection</h2>
-            <div class="status-code">
-                <h3>300 Multiple Choices</h3>
-                <p>Indicates multiple options for the resource that the client may follow.</p>
-            </div>
-            <div class="status-code">
-                <h3>301 Moved Permanently</h3>
-                <p>This and all future requests should be directed to the given URI.</p>
-            </div>
-            <div class="status-code">
-                <h3>302 Found</h3>
-                <p>Redirect to another URL. This is an example of industry practice contradicting the standard.</p>
-            </div>
-            <div class="status-code">
-                <h3>303 See Other</h3>
-                <p>The response to the request can be found under another URI using a GET method.</p>
-            </div>
-            <div class="status-code">
-                <h3>304 Not Modified</h3>
-                <p>Indicates that the resource has not been modified since the version specified by the request headers.</p>
-            </div>
-            <div class="status-code">
-                <h3>305 Use Proxy</h3>
-                <p>The requested resource is available only through a proxy, the address for which is provided in the response.</p>
-            </div>
-            <div class="status-code">
-                <h3>306 Switch Proxy</h3>
-                <p>No longer used. Originally meant 'Subsequent requests should use the specified proxy.'</p>
-            </div>
-            <div class="status-code">
-                <h3>307 Temporary Redirect</h3>
-                <p>In this case, the request should be repeated with another URI; however, future requests should still use the original URI.</p>
-            </div>
-            <div class="status-code">
-                <h3>308 Permanent Redirect</h3>
-                <p>The request and all future requests should be repeated using another URI.</p>
-            </div>
-            <!-- 3xx codes end here -->
-
-            <!-- 4xx codes start here -->
-
-            <div class="status-code-group">
-                <h2>4xx - Client Error</h2>
-                
-                <div class="status-code">
-                    <h3>400 Bad Request</h3>
-                    <p>The server cannot or will not process the request due to an apparent client error.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>401 Unauthorized</h3>
-                    <p>Similar to 403 Forbidden, but specifically for use when authentication is required and has failed or has not yet been provided.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>402 Payment Required</h3>
-                    <p>Reserved for future use. The original intention was that this code might be used as part of some form of digital cash or micropayment scheme.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>403 Forbidden</h3>
-                    <p>The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>404 Not Found</h3>
-                    <p>The requested resource could not be found but may be available in the future.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>405 Method Not Allowed</h3>
-                    <p>A request method is not supported for the requested resource.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>406 Not Acceptable</h3>
-                    <p>The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>407 Proxy Authentication Required</h3>
-                    <p>The client must first authenticate itself with the proxy.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>408 Request Timeout</h3>
-                    <p>The server timed out waiting for the request.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>409 Conflict</h3>
-                    <p>Indicates that the request could not be processed because of conflict in the request, such as an edit conflict.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>410 Gone</h3>
-                    <p>Indicates that the resource requested is no longer available and will not be available again.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>411 Length Required</h3>
-                    <p>The request did not specify the length of its content, which is required by the requested resource.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>412 Precondition Failed</h3>
-                    <p>The server does not meet one of the preconditions that the requester put on the request.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>413 Payload Too Large</h3>
-                    <p>The request is larger than the server is willing or able to process.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>414 URI Too Long</h3>
-                    <p>The URI provided was too long for the server to process.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>415 Unsupported Media Type</h3>
-                    <p>The request entity has a media type which the server or resource does not support.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>416 Range Not Satisfiable</h3>
-                    <p>The client has asked for a portion of the file, but the server cannot supply that portion.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>417 Expectation Failed</h3>
-                    <p>The server cannot meet the requirements of the Expect request-header field.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>418 I'm a teapot</h3>
-                    <p>The server refuses the attempt to brew coffee with a teapot.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>421 Misdirected Request</h3>
-                    <p>The request was directed at a server that is not able to produce a response.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>422 Unprocessable Entity</h3>
-                    <p>The request was well-formed but was unable to be followed due to semantic errors.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>423 Locked</h3>
-                    <p>The resource that is being accessed is locked.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>424 Failed Dependency</h3>
-                    <p>The request failed due to failure of a previous request.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>425 Too Early</h3>
-                    <p>Indicates that the server is unwilling to risk processing a request that might be replayed.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>426 Upgrade Required</h3>
-                    <p>The client should switch to a different protocol such as TLS/1.0.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>428 Precondition Required</h3>
-                    <p>The origin server requires the request to be conditional.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>429 Too Many Requests</h3>
-                    <p>The user has sent too many requests in a given amount of time.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>431 Request Header Fields Too Large</h3>
-                    <p>The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.</p>
-                </div>
-                
-                <div class="status-code">
-                    <h3>451 Unavailable For Legal Reasons</h3>
-                    <p>A server operator has received a legal demand to deny access to a resource or to a set of resources that includes the requested resource.</p>
-                </div>
-            </div>
-            
-            <!-- 4xx codes end here -->
-
-            <!-- 5xx codes start here -->
-        <div class="status-code-group">
-            <h2>5xx - Server Error</h2>
-            
-            <div class="status-code">
-                <h3>500 Internal Server Error</h3>
-                <p>A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>501 Not Implemented</h3>
-                <p>The server either does not recognize the request method, or it lacks the ability to fulfill the request.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>502 Bad Gateway</h3>
-                <p>The server was acting as a gateway or proxy and received an invalid response from the upstream server.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>503 Service Unavailable</h3>
-                <p>The server is currently unavailable (because it is overloaded or down for maintenance).</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>504 Gateway Timeout</h3>
-                <p>The server was acting as a gateway or proxy and did not receive a timely response from the upstream server.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>505 HTTP Version Not Supported</h3>
-                <p>The server does not support the HTTP protocol version used in the request.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>506 Variant Also Negotiates</h3>
-                <p>Transparent content negotiation for the request results in a circular reference.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>507 Insufficient Storage</h3>
-                <p>The server is unable to store the representation needed to complete the request.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>508 Loop Detected</h3>
-                <p>The server detected an infinite loop while processing the request.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>510 Not Extended</h3>
-                <p>Further extensions to the request are required for the server to fulfill it.</p>
-            </div>
-            
-            <div class="status-code">
-                <h3>511 Network Authentication Required</h3>
-                <p>The client needs to authenticate to gain network access.</p>
-            </div>
-        </div>        
-            <!-- 5xx codes end here -->
     </div>
-    <footer style="text-align: center; padding: 20px 0; background-color: #333; color: white;">
-        <p>&copy; 2023 All rights reserved.</p>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; HTTP Status Codes Guide — Built for developers with ❤️</p>
     </footer>
 
 </body>
