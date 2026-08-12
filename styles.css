@@ -1,46 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
+/* GitHub Dark Theme Color System (Primer Design System) */
 :root {
-    /* Base Color Palette */
-    --bg-main: #090d16;
-    --bg-card: #111827;
-    --bg-card-hover: #1f293d;
-    --bg-glass: rgba(17, 24, 39, 0.75);
-    --border-color: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(255, 255, 255, 0.2);
+    /* Canvas & Surfaces */
+    --bg-main: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2128;
+    --bg-glass: rgba(13, 17, 23, 0.85);
+    --bg-input: #010409;
+    --bg-code: #0d1117;
+    
+    /* Borders */
+    --border-color: #30363d;
+    --border-hover: #8b949e;
+    --border-muted: #21262d;
     
     /* Text Colors */
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --text-link: #58a6ff;
     
-    /* Category Colors */
-    --color-1xx: #38bdf8;
-    --color-1xx-bg: rgba(56, 189, 248, 0.12);
-    --color-1xx-border: rgba(56, 189, 248, 0.3);
+    /* GitHub Accent Colors per HTTP Category */
+    /* 1xx - Informational (GitHub Blue) */
+    --color-1xx: #58a6ff;
+    --color-1xx-bg: rgba(56, 139, 253, 0.12);
+    --color-1xx-border: rgba(56, 139, 253, 0.4);
     
-    --color-2xx: #34d399;
-    --color-2xx-bg: rgba(52, 211, 153, 0.12);
-    --color-2xx-border: rgba(52, 211, 153, 0.3);
+    /* 2xx - Success (GitHub Green) */
+    --color-2xx: #3fb950;
+    --color-2xx-bg: rgba(46, 160, 67, 0.12);
+    --color-2xx-border: rgba(46, 160, 67, 0.4);
     
-    --color-3xx: #a78bfa;
-    --color-3xx-bg: rgba(167, 139, 250, 0.12);
-    --color-3xx-border: rgba(167, 139, 250, 0.3);
+    /* 3xx - Redirection (GitHub Purple) */
+    --color-3xx: #a371f7;
+    --color-3xx-bg: rgba(137, 87, 229, 0.12);
+    --color-3xx-border: rgba(137, 87, 229, 0.4);
     
-    --color-4xx: #fb923c;
-    --color-4xx-bg: rgba(251, 146, 60, 0.12);
-    --color-4xx-border: rgba(251, 146, 60, 0.3);
+    /* 4xx - Client Error (GitHub Orange / Gold) */
+    --color-4xx: #d29922;
+    --color-4xx-bg: rgba(210, 153, 34, 0.12);
+    --color-4xx-border: rgba(210, 153, 34, 0.4);
     
-    --color-5xx: #f87171;
-    --color-5xx-bg: rgba(248, 113, 113, 0.12);
-    --color-5xx-border: rgba(248, 113, 113, 0.3);
+    /* 5xx - Server Error (GitHub Red) */
+    --color-5xx: #f85149;
+    --color-5xx-bg: rgba(248, 81, 73, 0.12);
+    --color-5xx-border: rgba(248, 81, 73, 0.4);
 
-    --accent-glow: rgba(56, 189, 248, 0.15);
     --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 18px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
 
-    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all 0.2s cubic-bezier(0.3, 0, 0, 1);
 }
 
 *, *::before, *::after {
@@ -52,21 +63,17 @@
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.5;
     min-height: 100vh;
     overflow-x: hidden;
-    background-image: 
-        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 85% 65%, rgba(167, 139, 250, 0.05) 0%, transparent 40%);
 }
 
 /* Header & Hero Section */
 .hero-header {
     text-align: center;
-    padding: 70px 20px 40px;
-    position: relative;
-    max-width: 1000px;
+    padding: 60px 20px 36px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -74,71 +81,69 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 16px;
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 4px 14px;
+    background: rgba(56, 139, 253, 0.1);
+    border: 1px solid rgba(56, 139, 253, 0.3);
     border-radius: 100px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 600;
     color: var(--color-1xx);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .hero-title {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    color: var(--text-primary);
 }
 
 .hero-description {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(0.98rem, 1.8vw, 1.15rem);
     color: var(--text-secondary);
-    max-width: 720px;
-    margin: 0 auto 32px;
+    max-width: 680px;
+    margin: 0 auto 28px;
 }
 
-/* Stats Counter Grid */
+/* GitHub Stat Chip Grid */
 .hero-stats {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 24px;
+    gap: 12px;
+    margin-top: 20px;
 }
 
 .stat-chip {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 18px;
+    gap: 8px;
+    padding: 6px 14px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
     color: var(--text-secondary);
 }
 
 .stat-chip strong {
     color: var(--text-primary);
     font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
+    font-weight: 600;
 }
 
-/* Sticky Controls Section */
+/* Sticky GitHub Control Panel */
 .sticky-controls {
     position: sticky;
     top: 0;
     z-index: 100;
     background: var(--bg-glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    padding: 20px 0;
+    padding: 16px 0;
 }
 
 .controls-container {
@@ -147,20 +152,20 @@ body {
     padding: 0 20px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
 }
 
-/* Search Bar Component */
+/* GitHub Style Search Bar */
 .search-wrapper {
     position: relative;
-    max-width: 720px;
+    max-width: 680px;
     width: 100%;
     margin: 0 auto;
 }
 
 .search-icon {
     position: absolute;
-    left: 18px;
+    left: 14px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-muted);
@@ -170,16 +175,16 @@ body {
 
 .search-input {
     width: 100%;
-    padding: 14px 90px 14px 48px;
-    font-size: 1.05rem;
+    padding: 10px 80px 10px 42px;
+    font-size: 0.95rem;
     font-family: inherit;
-    background: rgba(17, 24, 39, 0.9);
-    border: 1.5px solid var(--border-color);
-    border-radius: var(--radius-md);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
     color: var(--text-primary);
     transition: var(--transition);
     outline: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .search-input::placeholder {
@@ -188,7 +193,7 @@ body {
 
 .search-input:focus {
     border-color: var(--color-1xx);
-    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
 }
 
 .search-input:focus + .search-icon {
@@ -197,31 +202,31 @@ body {
 
 .shortcut-badge {
     position: absolute;
-    right: 48px;
+    right: 44px;
     top: 50%;
     transform: translateY(-50%);
-    padding: 3px 8px;
-    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 7px;
+    background: #21262d;
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
+    border-radius: 4px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
     pointer-events: none;
 }
 
 .clear-btn {
     position: absolute;
-    right: 14px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
     color: var(--text-muted);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    padding: 4px 8px;
-    border-radius: var(--radius-sm);
+    padding: 2px 6px;
+    border-radius: 4px;
     display: none;
     transition: var(--transition);
 }
@@ -231,7 +236,7 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Category Pill Tabs */
+/* Category Filter Pills (GitHub Tab Badges) */
 .category-filter {
     display: flex;
     justify-content: center;
@@ -240,68 +245,71 @@ body {
 }
 
 .filter-pill {
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 14px;
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 100px;
     color: var(--text-secondary);
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .filter-pill:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--border-muted);
     color: var(--text-primary);
     border-color: var(--border-hover);
 }
 
 .filter-pill.active {
-    background: var(--text-primary);
-    color: var(--bg-main);
-    border-color: var(--text-primary);
+    background: #21262d;
+    color: var(--text-primary);
+    border-color: #8b949e;
     font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .pill-count {
-    padding: 2px 7px;
-    background: rgba(255, 255, 255, 0.15);
+    padding: 1px 6px;
+    background: rgba(110, 118, 129, 0.2);
     border-radius: 10px;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-family: 'JetBrains Mono', monospace;
+    color: var(--text-secondary);
 }
 
 .filter-pill.active .pill-count {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
 }
 
 /* Main Container & Grid */
 .main-container {
     max-width: 1240px;
-    margin: 40px auto;
+    margin: 36px auto;
     padding: 0 20px;
 }
 
 .group-section {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
 }
 
 .group-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--border-color);
 }
 
 .group-title {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .group-header[data-cat="1xx"] .group-title { color: var(--color-1xx); }
@@ -311,7 +319,7 @@ body {
 .group-header[data-cat="5xx"] .group-title { color: var(--color-5xx); }
 
 .group-count {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
     font-family: 'JetBrains Mono', monospace;
 }
@@ -319,46 +327,28 @@ body {
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
+    gap: 16px;
 }
 
-/* Status Code Card Component */
+/* GitHub Status Card Component */
 .status-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 16px;
+    gap: 14px;
     transition: var(--transition);
     position: relative;
-    overflow: hidden;
 }
-
-.status-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: transparent;
-    transition: var(--transition);
-}
-
-.status-card[data-cat="1xx"]::before { background: var(--color-1xx); }
-.status-card[data-cat="2xx"]::before { background: var(--color-2xx); }
-.status-card[data-cat="3xx"]::before { background: var(--color-3xx); }
-.status-card[data-cat="4xx"]::before { background: var(--color-4xx); }
-.status-card[data-cat="5xx"]::before { background: var(--color-5xx); }
 
 .status-card:hover {
-    transform: translateY(-4px);
     background: var(--bg-card-hover);
-    border-color: var(--border-hover);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    border-color: #8b949e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(1, 4, 9, 0.4);
 }
 
 .card-top {
@@ -369,11 +359,10 @@ body {
 
 .code-badge {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: var(--radius-sm);
-    letter-spacing: -0.02em;
 }
 
 .status-card[data-cat="1xx"] .code-badge { color: var(--color-1xx); background: var(--color-1xx-bg); border: 1px solid var(--color-1xx-border); }
@@ -388,58 +377,59 @@ body {
 }
 
 .icon-btn {
-    background: rgba(255, 255, 255, 0.05);
+    background: #21262d;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     color: var(--text-secondary);
-    padding: 6px 10px;
+    padding: 5px 9px;
     cursor: pointer;
     transition: var(--transition);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .icon-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #30363d;
     color: var(--text-primary);
+    border-color: #8b949e;
 }
 
 .icon-btn.favorite.active {
-    color: #f59e0b;
-    border-color: rgba(245, 158, 11, 0.4);
-    background: rgba(245, 158, 11, 0.12);
+    color: #d29922;
+    border-color: rgba(210, 153, 34, 0.4);
+    background: rgba(210, 153, 34, 0.15);
 }
 
 .card-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
-    line-height: 1.3;
+    line-height: 1.35;
 }
 
 .card-desc {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     color: var(--text-secondary);
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
 .card-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
 }
 
 .inspect-btn {
-    background: rgba(255, 255, 255, 0.06);
+    background: #21262d;
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: var(--radius-sm);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
@@ -449,20 +439,20 @@ body {
 }
 
 .inspect-btn:hover {
-    background: var(--text-primary);
-    color: var(--bg-main);
-    border-color: var(--text-primary);
+    background: #30363d;
+    border-color: #8b949e;
+    color: var(--text-link);
 }
 
-/* Code Snippet / Detail Modal */
+/* GitHub Detail Modal Drawer */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(1, 4, 9, 0.85);
+    backdrop-filter: blur(8px);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -470,7 +460,7 @@ body {
     padding: 20px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.2s ease;
 }
 
 .modal-overlay.active {
@@ -482,15 +472,15 @@ body {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-    max-width: 680px;
+    max-width: 660px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    padding: 28px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    padding: 24px;
+    box-shadow: 0 16px 32px rgba(1, 4, 9, 0.85);
     position: relative;
-    transform: scale(0.95);
-    transition: transform 0.25s ease;
+    transform: scale(0.97);
+    transition: transform 0.2s ease;
 }
 
 .modal-overlay.active .modal-content {
@@ -501,22 +491,24 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .modal-code-title {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
 }
 
 .modal-close-btn {
     background: none;
     border: none;
     color: var(--text-muted);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     cursor: pointer;
-    padding: 4px 8px;
+    padding: 2px 6px;
     border-radius: var(--radius-sm);
     transition: var(--transition);
 }
@@ -529,11 +521,11 @@ body {
 .modal-body {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
 .modal-section-title {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-muted);
@@ -543,18 +535,18 @@ body {
 
 .snippet-tabs {
     display: flex;
-    gap: 6px;
+    gap: 4px;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 10px;
-    margin-bottom: 12px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .snippet-tab {
-    padding: 6px 14px;
+    padding: 5px 12px;
     background: none;
     border: none;
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 500;
     cursor: pointer;
     border-radius: var(--radius-sm);
@@ -563,12 +555,12 @@ body {
 
 .snippet-tab:hover {
     color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--border-muted);
 }
 
 .snippet-tab.active {
-    color: var(--color-1xx);
-    background: rgba(56, 189, 248, 0.1);
+    color: var(--text-link);
+    background: rgba(56, 139, 253, 0.15);
     font-weight: 600;
 }
 
@@ -577,40 +569,41 @@ body {
 }
 
 .code-block {
-    background: #080c14;
+    background: var(--bg-code);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 16px;
+    padding: 14px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.88rem;
-    color: #e2e8f0;
+    font-size: 0.85rem;
+    color: #e6edf3;
     overflow-x: auto;
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
 .code-copy-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 6px 10px;
-    background: rgba(255, 255, 255, 0.1);
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    background: #21262d;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
-    color: var(--text-primary);
-    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
     cursor: pointer;
     transition: var(--transition);
 }
 
 .code-copy-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #30363d;
+    color: var(--text-primary);
 }
 
-/* Toast Notification */
+/* GitHub Toast Notification */
 .toast-container {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 20px;
+    right: 20px;
     z-index: 2000;
     display: flex;
     flex-direction: column;
@@ -618,28 +611,28 @@ body {
 }
 
 .toast {
-    background: #1e293b;
+    background: #161b22;
     border: 1px solid var(--color-2xx-border);
     color: var(--text-primary);
-    padding: 12px 20px;
+    padding: 10px 16px;
     border-radius: var(--radius-md);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     display: flex;
     align-items: center;
-    gap: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    animation: toastIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(1, 4, 9, 0.85);
+    animation: toastIn 0.25s cubic-bezier(0.3, 0, 0, 1);
 }
 
 @keyframes toastIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 /* Empty State */
 .empty-state {
     text-align: center;
-    padding: 80px 20px;
+    padding: 70px 20px;
     display: none;
 }
 
@@ -648,42 +641,43 @@ body {
 }
 
 .empty-icon {
-    font-size: 3rem;
-    margin-bottom: 16px;
-    opacity: 0.5;
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+    opacity: 0.6;
 }
 
 .empty-title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .empty-subtitle {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-bottom: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 18px;
 }
 
 .reset-search-btn {
-    padding: 10px 20px;
-    background: var(--color-1xx-bg);
-    border: 1px solid var(--color-1xx-border);
-    color: var(--color-1xx);
-    border-radius: var(--radius-md);
-    font-weight: 600;
+    padding: 8px 16px;
+    background: #21262d;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.88rem;
     cursor: pointer;
     transition: var(--transition);
 }
 
 .reset-search-btn:hover {
-    background: var(--color-1xx);
-    color: var(--bg-main);
+    background: #30363d;
+    border-color: #8b949e;
 }
 
 /* Highlighted Text */
 mark {
-    background: rgba(251, 146, 60, 0.3);
+    background: rgba(210, 153, 34, 0.3);
     color: #fff;
     border-radius: 2px;
     padding: 0 2px;
@@ -692,11 +686,11 @@ mark {
 /* Footer */
 footer {
     text-align: center;
-    padding: 40px 20px;
+    padding: 32px 20px;
     border-top: 1px solid var(--border-color);
     color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-top: 60px;
+    font-size: 0.85rem;
+    margin-top: 48px;
 }
 
 footer a {
@@ -705,21 +699,21 @@ footer a {
 }
 
 footer a:hover {
-    color: var(--color-1xx);
+    color: var(--text-link);
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .hero-header {
-        padding: 50px 16px 30px;
+        padding: 40px 16px 24px;
     }
     
     .sticky-controls {
-        padding: 14px 0;
+        padding: 12px 0;
     }
     
     .search-input {
-        padding-right: 70px;
+        padding-right: 60px;
     }
     
     .shortcut-badge {
