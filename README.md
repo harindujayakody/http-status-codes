@@ -60,7 +60,7 @@ An interactive, high-performance, developer-focused reference web application fo
 - **302 Found**: Temporary redirect to another URL.
 - **303 See Other**: Response can be found under another URI using a GET method.
 - **304 Not Modified**: Resource has not been modified since version specified by request headers.
-- **305 Use Proxy**: Requested resource available only through a proxy provided in response.
+- **305 Use Proxy**: Deprecated by RFC 9110 — no longer used; do not generate. Formerly: requested resource available only through a proxy provided in response.
 - **306 Switch Proxy**: No longer used. Originally meant subsequent requests should use specified proxy.
 - **307 Temporary Redirect**: Repeat request with another URI; future requests should use original URI.
 - **308 Permanent Redirect**: Request and all future requests should be repeated using another URI.
