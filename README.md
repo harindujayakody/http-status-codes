@@ -1,3 +1,5 @@
+> **Moved:** this reference now lives at [harindujayakody.com/free-tools/http-status-codes/](https://harindujayakody.com/free-tools/http-status-codes/), with a page for every code. The old GitHub Pages URL redirects there. The original app is kept in the git history.
+
 # 🌐 HTTP Status Codes Guide
 
 An interactive, high-performance, developer-focused reference web application for all 63 official HTTP status codes. Features real-time search, category filtering, an obsidian dark UI, code inspector modal with copyable multi-language code snippets, and keyboard shortcuts.
